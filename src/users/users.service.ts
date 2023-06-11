@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { User } from 'src/entities/user.entity'
+import { CreateUserDto } from './dtos/create-user.dto'
 
 @Injectable()
 export class UsersService {
@@ -57,5 +58,14 @@ export class UsersService {
       return user.id === id
     })
     return find
+  }
+
+  createUser(payload: CreateUserDto) {
+    this.users.push({
+      id: this.users.length + 1,
+      thumbnail_url: '',
+      created_at: '2023-06-11T13:25:15.000Z',
+      ...payload,
+    })
   }
 }
