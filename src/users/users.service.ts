@@ -51,4 +51,11 @@ export class UsersService {
   getUsers(): User[] {
     return this.users
   }
+
+  getUser(id: number): User {
+    const find = this.users.find((user) => {
+      return user.id === id
+    })
+    return find
+  }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common'
+import { Controller, Get, Param, Post } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { User } from 'src/entities/user.entity'
 
@@ -19,5 +19,10 @@ export class UsersController {
   @Get('users')
   getUsers() {
     return this.usersService.getUsers()
+  }
+
+  @Get('users/:id')
+  getUser(@Param('id') id: number) {
+    return this.usersService.getUser(id)
   }
 }
